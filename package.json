@@ -1,0 +1,39 @@
+{
+    "name": "logger.roncli.com",
+    "version": "0.0.1",
+    "description": "A website that displays logs from a variety of sources.",
+    "homepage": "https://github.com/roncli/logger.roncli.com",
+    "bugs": {
+        "url": "https://github.com/roncli/logger.roncli.com/issues",
+        "email": "roncli@roncli.com"
+    },
+    "license": "None",
+    "author": {
+        "name": "Ronald M. Clifford",
+        "email": "roncli@roncli.com",
+        "url": "http://www.roncli.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/roncli/logger.roncli.com.git"
+    },
+    "dependencies": {
+        "compression": "1.7.4",
+        "express": "4.17.1",
+        "express-minify": "1.0.0",
+        "express-session": "1.16.2",
+        "html-minifier": "4.0.0",
+        "morgan": "1.9.1",
+        "node-database": "roncli/node-database#0c53b39"
+    },
+    "devDependencies": {
+        "@types/express": "4.17.0",
+        "@types/express-session": "1.15.13",
+        "@types/html-minifier": "3.5.3",
+        "@types/node": "12.0.12"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "private": true
+}
