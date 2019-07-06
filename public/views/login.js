@@ -38,8 +38,10 @@ class LoginView {
                 ` : ""}
                 <form method="post" action="/login">
                     <input type="hidden" name="return" value="${LoginView.Common.htmlEncode(ret)}">
-                    <div class="text">Username: <input type="text" name="username" /></div>
-                    <div class="text">Password: <input type="password" name="password" /></div>
+                    <div class="text">Username:</div>
+                    <div><input type="text" name="username" /></div>
+                    <div class="text">Password:</div>
+                    <div><input type="password" name="password" /></div>
                     <div><input type="submit" value="Login" /></div>
                 </form>
             </div>

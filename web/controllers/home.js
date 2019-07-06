@@ -1,6 +1,6 @@
 const Common = require("../includes/common"),
     HomeView = require("../../public/views/home"),
-    settings = require("../../settings");
+    Log = require("../../src/models/log");
 
 /**
  * @typedef {import("express").Request} Express.Request
@@ -29,14 +29,16 @@ class Home {
      * Processes the request.
      * @param {Express.Request} req The request.
      * @param {Express.Response} res The response.
-     * @returns {void}
+     * @returns {Promise} A promise that resolves when the request has been completed.
      */
-    static get(req, res) {
+    static async get(req, res) {
+        const logs = await Log.getOldest100();
+
         res.status(200).send(Common.page(
             /* html */`
                 <link rel="stylesheet" href="/css/home.css" />
             `,
-            HomeView.get(),
+            HomeView.get(logs),
             req
         ));
     }

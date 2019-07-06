@@ -37,6 +37,7 @@ class Login {
         res.status(200).send(Common.page(
             /* html */`
                 <link rel="stylesheet" href="/css/login.css" />
+                <script src="/js/login.js"></script>
             `,
             LoginView.get(req.originalUrl || "/"),
             req
@@ -67,6 +68,7 @@ class Login {
             res.status(200).send(Common.page(
                 /* html */`
                     <link rel="stylesheet" href="/css/login.css" />
+                    <script src="/js/login.js"></script>
                 `,
                 LoginView.get(req.body.return, true),
                 req

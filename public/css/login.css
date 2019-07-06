@@ -1,0 +1,25 @@
+#login {
+    font-size: 14px;
+}
+
+#login .section {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+#login .text {
+    color: #cccccc;
+    padding: 2px 5px;
+}
+
+#login form {
+    color: #cccccc;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    align-items: center;
+}
+
+#login form > div {
+    padding: 2px 5px;
+}

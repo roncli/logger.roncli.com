@@ -35,6 +35,7 @@ class IndexView {
                     <meta name="twitter:creator" content="@roncli" />
                     <link rel="stylesheet" href="/css/reset.css" />
                     <link rel="stylesheet" href="/css/common.css" />
+                    <script src="/js/common.js"></script>
                     ${head}
                 </head>
                 <body>

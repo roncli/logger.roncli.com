@@ -1,3 +1,7 @@
+/**
+ * @typedef {import("../../src/models/log")} Log
+ */
+
 //  #   #                       #   #    #
 //  #   #                       #   #
 //  #   #   ###   ## #    ###   #   #   ##     ###   #   #
@@ -18,13 +22,25 @@ class HomeView {
     //  ###
     /**
      * Gets the home view.
+     * @param {Log[]} logs The logs to display.
      * @returns {string} An HTML string of the home view.
      */
-    static get() {
+    static get(logs) {
         return /* html */`
             <div id="home">
-                <div class="text">
-                    You did it!
+                <div id="logs">
+                    <div class="header">ID</div>
+                    <div class="header">Application</div>
+                    <div class="header">Category</div>
+                    <div class="header">Message</div>
+                    <div class="header">Date</div>
+                    ${logs.map((log) => /* html */`
+                        <div class="id">${log.id}</div>
+                        <div>${log.application}</div>
+                        <div>${log.category}</div>
+                        <div class="message"><pre>${log.message}</pre></div>
+                        <div class="date"><script>document.write(Common.formatDate(new Date("${log.date}")));</script></div>
+                    `).join("")}
                 </div>
             </div>
         `;
