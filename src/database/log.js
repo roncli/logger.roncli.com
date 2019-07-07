@@ -1,4 +1,5 @@
-const db = require("./index");
+const Db = require("node-database"),
+    db = require("./index");
 
 //  #                    ####   #
 //  #                     #  #  #
@@ -13,6 +14,24 @@ const db = require("./index");
  * A class that handles calls to the database for logs.
  */
 class LogDb {
+    //    #        ##           #          ###         ###      #
+    //    #         #           #          #  #         #       #
+    //  ###   ##    #     ##   ###    ##   ###   #  #   #     ###
+    // #  #  # ##   #    # ##   #    # ##  #  #  #  #   #    #  #
+    // #  #  ##     #    ##     #    ##    #  #   # #   #    #  #
+    //  ###   ##   ###    ##     ##   ##   ###     #   ###    ###
+    //                                            #
+    /**
+     * Deletes a log entry by its ID.
+     * @param {number} id The ID of the log entry to delete.
+     * @returns {Promise} A promise that resolves when the log entry has been deleted.
+     */
+    static async deleteById(id) {
+        await db.query(/* sql */`
+            DELETE FROM tblLog WHERE LogID = @id
+        `, {id: {type: Db.INT, value: id}});
+    }
+
     //              #     ##   ##       #                #     #     #     #
     //              #    #  #   #       #                #    ##    # #   # #
     //  ###   ##   ###   #  #   #     ###   ##    ###   ###    #    # #   # #

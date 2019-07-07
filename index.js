@@ -51,6 +51,7 @@ const compression = require("compression"),
         resave: false,
         saveUninitialized: false
     }));
+    app.use(express.json());
     app.use(express.urlencoded({extended: true}));
 
     // Web server routes.

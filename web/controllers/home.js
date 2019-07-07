@@ -37,8 +37,11 @@ class Home {
         res.status(200).send(Common.page(
             /* html */`
                 <link rel="stylesheet" href="/css/home.css" />
+                <script src="/views/home/log.js"></script>
+                <script src="/views/home/logs.js"></script>
+                <script src="/js/home.js"></script>
             `,
-            HomeView.get(logs),
+            HomeView.get({logs}),
             req
         ));
     }

@@ -31,6 +31,26 @@ class Log {
         this.date = data.date;
     }
 
+    //    #        ##           #
+    //    #         #           #
+    //  ###   ##    #     ##   ###    ##
+    // #  #  # ##   #    # ##   #    # ##
+    // #  #  ##     #    ##     #    ##
+    //  ###   ##   ###    ##     ##   ##
+    /**
+     * Deletes a log by its ID.
+     * @param {number} id The ID of the log to delete.
+     * @returns {Promise} A promise that resolves when the log entry is deleted.
+     */
+    static async delete(id) {
+        try {
+            await Db.deleteById(id);
+        } catch (err) {
+            err.message = `There was a database error deleting a log. - ${err.message}`;
+            throw err;
+        }
+    }
+
     //              #     ##   ##       #                #     #     #     #
     //              #    #  #   #       #                #    ##    # #   # #
     //  ###   ##   ###   #  #   #     ###   ##    ###   ###    #    # #   # #

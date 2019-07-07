@@ -87,17 +87,18 @@ class Common {
     //                                                                                           #
     /**
      * Loads data from an API into an element.
-     * @param {string} api The API to load data from.
+     * @param {RequestInfo} api The API to load data from.
+     * @param {RequestInit} options The options to use with the API.
      * @param {string} querySelector The query selector to fill the data into.
      * @param {function} template The template function.
      * @returns {Promise} A promise that resolves when the data has been loaded.
      */
-    static loadDataIntoTemplate(api, querySelector, template) {
+    static loadDataIntoTemplate(api, options, querySelector, template) {
         var el = document.querySelector(querySelector);
 
         el.innerHTML = "<div class=\"loading\">Loading...</div>";
 
-        return fetch(api).then((res) => res.json()).then((data) => {
+        return fetch(api, options).then((res) => res.json()).then((data) => {
             el.innerHTML = "";
 
             if (Array.isArray(data)) {
@@ -108,5 +109,21 @@ class Common {
                 el.innerHTML = template(data);
             }
         });
+    }
+
+    //       #       #                #    ###          ##                                   #           #
+    //       #                        #     #          #  #                                  #
+    //  ##   ###     #    ##    ##   ###    #     ##   #  #  #  #   ##   ###   #  #   ###   ###   ###   ##    ###    ###
+    // #  #  #  #    #   # ##  #      #     #    #  #  #  #  #  #  # ##  #  #  #  #  ##      #    #  #   #    #  #  #  #
+    // #  #  #  #    #   ##    #      #     #    #  #  ## #  #  #  ##    #      # #    ##    #    #      #    #  #   ##
+    //  ##   ###   # #    ##    ##     ##   #     ##    ##    ###   ##   #       #   ###      ##  #     ###   #  #  #
+    //              #                                     #                     #                                    ###
+    /**
+     * Converts a simple object to a querystring.
+     * @param {object} obj The object to turn to a querystring.
+     * @returns {string} The querystring.
+     */
+    static objectToQuerystring(obj) {
+        return Object.keys(obj).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join("&");
     }
 }
