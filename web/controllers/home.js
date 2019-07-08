@@ -48,7 +48,8 @@ class Home {
 }
 
 Home.route = {
-    path: "/"
+    path: "/",
+    requiresAuthorization: true
 };
 
 module.exports = Home;

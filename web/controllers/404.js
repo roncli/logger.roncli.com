@@ -33,7 +33,8 @@ class NotFound {
 }
 
 NotFound.route = {
-    path: "/404"
+    path: "/404",
+    requiresAuthorization: false
 };
 
 module.exports = NotFound;

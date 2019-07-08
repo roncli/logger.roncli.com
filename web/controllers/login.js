@@ -78,7 +78,8 @@ class Login {
 }
 
 Login.route = {
-    path: "/login"
+    path: "/login",
+    requiresAuthorization: false
 };
 
 module.exports = Login;

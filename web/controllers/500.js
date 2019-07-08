@@ -32,6 +32,6 @@ class ServerError {
     }
 }
 
-ServerError.route = {};
+ServerError.route = {requiresAuthorization: false};
 
 module.exports = ServerError;

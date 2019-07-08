@@ -21,7 +21,7 @@ class Common {
      * @returns {string} The formatted time.
      */
     static formatTime(time) {
-        return (time.getHours() === 0 ? "12" : time.getHours() > 12 ? (time.getHours() - 12).toString() : time.getHours().toString()) + ":" + (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString() + " " + (time.getHours() < 12 ? "AM" : "PM");
+        return (time.getHours() === 0 ? "12" : time.getHours() > 12 ? (time.getHours() - 12).toString() : time.getHours().toString()) + ":" + (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString() + ":" + (time.getSeconds() < 10 ? "0" : "") + time.getSeconds().toString() + " " + (time.getHours() < 12 ? "AM" : "PM");
     }
 
     //   #                            #    ###          #

@@ -33,12 +33,13 @@ class DeleteApi {
      */
     static async post(req, res) {
         await Log.delete(+req.body.id);
-        return res.json({logs: await Log.getOldest100()});
+        res.json({logs: await Log.getOldest100()});
     }
 }
 
 DeleteApi.route = {
-    path: "/api/delete"
+    path: "/api/delete",
+    requiresAuthorization: true
 };
 
 module.exports = DeleteApi;

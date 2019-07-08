@@ -32,6 +32,6 @@ class MethodNotAllowed {
     }
 }
 
-MethodNotAllowed.route = {};
+MethodNotAllowed.route = {requiresAuthorization: false};
 
 module.exports = MethodNotAllowed;

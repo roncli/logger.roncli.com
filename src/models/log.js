@@ -31,6 +31,29 @@ class Log {
         this.date = data.date;
     }
 
+    //          #     #
+    //          #     #
+    //  ###   ###   ###
+    // #  #  #  #  #  #
+    // # ##  #  #  #  #
+    //  # #   ###   ###
+    /**
+     * Adds a log.
+     * @param {string} application The application the log is from.
+     * @param {string} category The category of the log.
+     * @param {string} message The log message.
+     * @param {Date} date The date of the log.
+     * @returns {Promise<number>} A promise that resolves with the ID number of the new log.
+     */
+    static async add(application, category, message, date) {
+        try {
+            return await Db.add(application, category, message, date);
+        } catch (err) {
+            err.message = `There was a database error adding a log. - ${err.message}`;
+            throw err;
+        }
+    }
+
     //    #        ##           #
     //    #         #           #
     //  ###   ##    #     ##   ###    ##

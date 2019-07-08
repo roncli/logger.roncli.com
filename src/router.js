@@ -110,7 +110,7 @@ class Router {
             classInfo.methods.forEach((method) => {
                 router[method](classInfo.path, async (/** @type {Express.Request} */ req, /** @type {Express.Response} */ res, /** @type {function} */ next) => {
                     try {
-                        if (["/404", "/405", "/500", "/login"].indexOf(req.path) === -1 && (!req.session || typeof req.session.username !== "string" || settings.users[req.session.username] !== req.session.password || req.session.ip !== ((req.headers["x-forwarded-for"] ? req.headers["x-forwarded-for"] : void 0) || req.ip))) {
+                        if (!!classInfo.class.route.requiresAuthorization && (!req.session || typeof req.session.username !== "string" || settings.users[req.session.username] !== req.session.password || req.session.ip !== ((req.headers["x-forwarded-for"] ? req.headers["x-forwarded-for"] : void 0) || req.ip))) {
                             return classes[path.resolve(`${__dirname}/../web/controllers/login.js`)].class.get(req, res, next);
                         }
 
