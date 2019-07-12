@@ -35,7 +35,7 @@ class LogView {
             </div>
             <div>${log.application}</div>
             <div>${log.category}</div>
-            <div class="message"><pre>${log.message}</pre></div>
+            <div class="message"><pre>${LogView.Common.htmlEncode(log.message)}</pre></div>
             <div class="date"><time class="local" datetime="${log.date}"></time></div>
         `;
     }
