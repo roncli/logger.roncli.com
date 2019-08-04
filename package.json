@@ -1,6 +1,6 @@
 {
     "name": "logger.roncli.com",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A website that displays logs from a variety of sources.",
     "homepage": "https://github.com/roncli/logger.roncli.com",
     "bugs": {
