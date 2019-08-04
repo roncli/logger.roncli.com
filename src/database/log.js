@@ -79,7 +79,7 @@ class LogDb {
          * @type {{recordsets: [{LogID: number, Application: string, Category: string, Message: string, CrDate: Date}[]]}}
          */
         const data = await db.query(/* sql */`
-            SELECT TOP 100 LogID, Application, Category, Message, CrDate FROM tblLog ORDER BY CrDate
+            SELECT TOP 100 LogID, Application, Category, Message, CrDate FROM tblLog ORDER BY CrDate, LogID
         `);
         return data && data.recordsets && data.recordsets[0] && data.recordsets[0].map((row) => ({
             id: row.LogID,
