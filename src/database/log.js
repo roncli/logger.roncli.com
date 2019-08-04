@@ -63,6 +63,34 @@ class LogDb {
         `, {id: {type: Db.INT, value: id}});
     }
 
+    //              #    ###         ###      #
+    //              #    #  #         #       #
+    //  ###   ##   ###   ###   #  #   #     ###
+    // #  #  # ##   #    #  #  #  #   #    #  #
+    //  ##   ##     #    #  #   # #   #    #  #
+    // #      ##     ##  ###     #   ###    ###
+    //  ###                     #
+    /**
+     * Gets a log by its ID.
+     * @param {number} id The ID of the log.
+     * @returns {Promise<{id: number, application: string, category: string, message: string, date: Date}[]>} A promise that resolves with the log.
+     */
+    static async getById(id) {
+        /**
+         * @type {{recordsets: [{LogID: number, Application: string, Category: string, Message: string, CrDate: Date}[]]}}
+         */
+        const data = await db.query(/* sql */`
+            SELECT LogID, Application, Category, Message, CrDate FROM tblLog WHERE LogID = @id
+        `, {id: {type: Db.INT, value: id}});
+        return data && data.recordsets && data.recordsets[0] && data.recordsets[0].map((row) => ({
+            id: row.LogID,
+            application: row.Application,
+            category: row.Category,
+            message: row.Message,
+            date: row.CrDate
+        })) || [];
+    }
+
     //              #     ##   ##       #                #     #     #     #
     //              #    #  #   #       #                #    ##    # #   # #
     //  ###   ##   ###   #  #   #     ###   ##    ###   ###    #    # #   # #

@@ -74,6 +74,27 @@ class Log {
         }
     }
 
+    //              #    ###         ###      #
+    //              #    #  #         #       #
+    //  ###   ##   ###   ###   #  #   #     ###
+    // #  #  # ##   #    #  #  #  #   #    #  #
+    //  ##   ##     #    #  #   # #   #    #  #
+    // #      ##     ##  ###     #   ###    ###
+    //  ###                     #
+    /**
+     * Gets a log by its ID.
+     * @param {number} id The ID of the log.
+     * @returns {Promise<Log[]>} A promise that resolves with the log.
+     */
+    static async getById(id) {
+        try {
+            return (await Db.getById(id)).map((log) => new Log(log));
+        } catch (err) {
+            err.message = `There was a database error getting a log. - ${err.message}`;
+            throw err;
+        }
+    }
+
     //              #     ##   ##       #                #     #     #     #
     //              #    #  #   #       #                #    ##    # #   # #
     //  ###   ##   ###   #  #   #     ###   ##    ###   ###    #    # #   # #
@@ -89,7 +110,7 @@ class Log {
         try {
             return (await Db.getOldest100()).map((log) => new Log(log));
         } catch (err) {
-            err.message = `There was a database error getting the list of allowed maps. - ${err.message}`;
+            err.message = `There was a database error getting the recent logs. - ${err.message}`;
             throw err;
         }
     }
