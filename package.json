@@ -27,7 +27,7 @@
         "node-database": "roncli/node-database#v1.2.12"
     },
     "devDependencies": {
-        "@types/express": "4.17.15",
+        "@types/express": "4.17.16",
         "@types/express-session": "1.17.5",
         "@types/html-minifier": "4.0.2",
         "@types/node": "18.11.18",
